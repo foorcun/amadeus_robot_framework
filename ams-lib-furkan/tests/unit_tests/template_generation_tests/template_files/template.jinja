@@ -1,0 +1,8 @@
+{
+    "flight": {
+        "customerId": "{{ data["customerId"] }}",
+        "airlineCode":{% if data["airlineCode"] %} "{{ data["airlineCode"] }}" {% else %} "{{ generate_airline_code() }}" {% endif %},
+        "flightNumber":{% if data["flightNumber"] %} "{{ data["flightNumber"] }}" {% else %} "{{ generate_flight_number(4) }}" {% endif %},
+        "operationalSuffix": ""
+    },
+}

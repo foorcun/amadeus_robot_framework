@@ -1,0 +1,7 @@
+{
+    "startDate": "{{ data["startDate"] }}",
+    "endDate": "{{ data["endDate"] }}",
+    {% if data["messageNumber"] %}"messageNumber": {{ data["messageNumber"] }},{% endif %}
+    "pageStartRow": {% if data["pageStartRow"] %}{{ data["pageStartRow"] }}{% else %}0{% endif %},
+    "timezone": "UTC"
+}

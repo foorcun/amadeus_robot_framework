@@ -1,0 +1,11 @@
+{
+    "type": "object",
+    "properties": {
+        "generalProcessingStatus": {"type": "string"},
+        "content": {"type": "array"}
+    },
+    "required": [
+        "content",
+        "generalProcessingStatus"
+    ]
+}

@@ -1,0 +1,65 @@
+{
+    "customerId": "{{ data.customerId }}",
+    "name": "{{ data.name }}",
+    {% if data.periods %}
+    "periods": [
+    {% for period in data.periods %}
+    {
+        "periodId": {{ period.periodId if period.periodId is not none else "null" }},
+        "deleted": {{ period.deleted if period.deleted is not none else "null" }},
+        "startDateTime": "{{ period.startDateTime if period.startDateTime else now().isoformat() }}",
+        "endDateTime": {{ '"' ~ period.endDateTime ~ '"' if period.endDateTime else "null" }},
+        "allowedSecurityLevelArrival": {{ period.allowedSecurityLevelArrival if period.allowedSecurityLevelArrival else "[]" }},
+        "allowedSecurityLevelDeparture": {{ period.allowedSecurityLevelDeparture if period.allowedSecurityLevelDeparture else "[]" }},
+        "busRequired": {{ period.busRequired if period.busRequired is not none else "null" }},
+        "loungeBoarding": {{ period.loungeBoarding if period.loungeBoarding is not none else "null" }},
+        "swingGate": {{ period.swingGate if period.swingGate is not none else "null" }},
+        "telephone": {{ period.telephone if period.telephone is not none else "null" }},
+        "allowedDirection": "{{ period.allowedDirection if period.allowedDirection else "BOTH" }}",
+        "passportCheckForced": "{{ period.passportCheckForced if period.passportCheckForced else "NONE" }}",
+        "securityCheckForced": "{{ period.securityCheckForced if period.securityCheckForced else "NONE" }}",
+        "customsCheckForced": "{{ period.customsCheckForced if period.customsCheckForced else "NONE" }}",
+        "capacityArrival": "{{ period.capacityArrival if period.capacityArrival else "1" }}",
+        "capacityDeparture": "{{ period.capacityDeparture if period.capacityDeparture else "1" }}"
+    }
+    {% if not loop.last %},{% endif %}
+    {% endfor %}
+    ],
+    {% else %}
+    "periods": [
+    {
+        "periodId": null,
+        "deleted": null,
+        "startDateTime": "{{ now().isoformat() }}",
+        "endDateTime": null,
+        "allowedSecurityLevelArrival": [],
+        "allowedSecurityLevelDeparture": [],
+        "busRequired": null,
+        "loungeBoarding": null,
+        "swingGate": null,
+        "telephone": null,
+        "allowedDirection": "BOTH",
+        "passportCheckForced": "NONE",
+        "securityCheckForced": "NONE",
+        "customsCheckForced": "NONE",
+        "capacityArrival": "1",
+        "capacityDeparture": "1"
+    }
+    ],
+    {% endif %}
+    {% if data.connections %}
+    "connections": {
+    "standDirectionalConnection": {{ data.connections.standDirectionalConnection if data.connections.standDirectionalConnection else "[]" }},
+    "equipmentDirectionalConnection": {{ data.connections.equipmentDirectionalConnection if data.connections.equipmentDirectionalConnection else "[]" }},
+    "airbridgeConnection": {{ data.connections.airbridgeConnection if data.connections.airbridgeConnection is not none else "null" }},
+    "loungeConnection": {{ data.connections.loungeConnection if data.connections.loungeConnection is not none else "null" }}
+    }
+    {% else %}
+    "connections": {
+    "standDirectionalConnection": [],
+    "equipmentDirectionalConnection": [],
+    "airbridgeConnection": null,
+    "loungeConnection": null
+    }
+    {% endif %}
+}

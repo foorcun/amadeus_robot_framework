@@ -1,0 +1,724 @@
+{
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "type": "object",
+    "properties": {
+        "generalProcessingStatus": {"type": "string"},
+        "generalErrorInformation": {"type": "array"},
+        "cannedErrorInformation": {"type": "array"},
+        "content": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {"type": "string"},
+                    "flight": {
+                        "type": "object",
+                        "properties": {
+                            "customerId": {"type": "string"},
+                            "airlineCode": {"type": "string"},
+                            "flightNumber": {"type": "integer"},
+                            "operationalSuffix": {"type": ["null", "string"]},
+                            "legType": {"type": "null"},
+                            "functionalAlerts": {"type": "array"},
+                            "refAirport": {"type": "string"},
+                            "localDataAirport": {"type": "null"},
+                            "legPeriodCount": {"type": "integer"}
+                        },
+                        "required": [
+                            "airlineCode",
+                            "customerId",
+                            "flightNumber",
+                            "functionalAlerts",
+                            "legPeriodCount",
+                            "legType",
+                            "localDataAirport",
+                            "operationalSuffix",
+                            "refAirport"
+                        ]
+                    },
+                    "adhoc": {"type": "boolean"},
+                    "fromSources": {"type": "array", "items": {"type": "string"}},
+                    "departureAirport": {"type": "string"},
+                    "arrivalAirport": {"type": "string"},
+                    "departureTime": {
+                        "anyOf": [
+                            {"type": "null"},
+                            {"type": "array", "items": {"type": "integer"}}
+                        ]
+                    },
+                    "departureTimeNullOverride": {"type": "boolean"},
+                    "departureTimeSource": {"type": ["null", "string"]},
+                    "arrivalTime": {
+                        "anyOf": [
+                            {"type": "null"},
+                            {"type": "array", "items": {"type": "integer"}}
+                        ]
+                    },
+                    "arrivalTimeNullOverride": {"type": "boolean"},
+                    "arrivalTimeSource": {"type": ["null", "string"]},
+                    "startOfDeparturePeriod": {
+                        "anyOf": [
+                            {"type": "null"},
+                            {"type": "array", "items": {"type": "integer"}}
+                        ]
+                    },
+                    "endOfDeparturePeriod": {
+                        "anyOf": [
+                            {"type": "null"},
+                            {"type": "array", "items": {"type": "integer"}}
+                        ]
+                    },
+                    "depPeriodDaysOfOp": {
+                        "type": "array",
+                        "items": {"type": "string"}
+                    },
+                    "startOfArrivalPeriod": {
+                        "anyOf": [
+                            {"type": "null"},
+                            {"type": "array", "items": {"type": "integer"}}
+                        ]
+                    },
+                    "endOfArrivalPeriod": {
+                        "anyOf": [
+                            {"type": "null"},
+                            {"type": "array", "items": {"type": "integer"}}
+                        ]
+                    },
+                    "arrPeriodDaysOfOp": {
+                        "type": "array",
+                        "items": {"type": "string"}
+                    },
+                    "aircraftType": {"type": ["null", "string"]},
+                    "aircraftTypeNullOverride": {"type": "boolean"},
+                    "aircraftTypeSource": {"type": ["null", "string"]},
+                    "aircraftOwner": {"type": "null"},
+                    "aircraftOwnerNullOverride": {"type": "boolean"},
+                    "aircraftOwnerSource": {"type": "null"},
+                    "aircraftMaxPax": {"type": ["integer", "null"]},
+                    "aircraftMaxPaxNullOverride": {"type": "boolean"},
+                    "aircraftMaxPaxSource": {"type": ["null", "string"]},
+                    "aircraftICAOGroup": {"type": ["null", "string"]},
+                    "aircraftSeats": {"type": ["integer", "null"]},
+                    "aircraftSeatsNullOverride": {"type": "boolean"},
+                    "aircraftSeatsSource": {"type": ["null", "string"]},
+                    "arrivalTerminal": {"type": ["null", "string"]},
+                    "arrivalTerminalNullOverride": {"type": "boolean"},
+                    "arrivalTerminalSource": {"type": ["null", "string"]},
+                    "departureTerminal": {"type": ["null", "string"]},
+                    "departureTerminalNullOverride": {"type": "boolean"},
+                    "departureTerminalSource": {"type": ["null", "string"]},
+                    "arrivalAircraftTerminal": {"type": ["null", "string"]},
+                    "arrivalAircraftTerminalNullOverride": {"type": "boolean"},
+                    "arrivalAircraftTerminalSource": {"type": ["null", "string"]},
+                    "departureAircraftTerminal": {"type": ["null", "string"]},
+                    "departureAircraftTerminalNullOverride": {"type": "boolean"},
+                    "departureAircraftTerminalSource": {"type": ["null", "string"]},
+                    "departureStand": {"type": "null"},
+                    "departureStandNullOverride": {"type": "boolean"},
+                    "departureStandSource": {"type": "null"},
+                    "arrivalStand": {"type": "null"},
+                    "arrivalStandNullOverride": {"type": "boolean"},
+                    "arrivalStandSource": {"type": "null"},
+                    "arrivalRemoteStand": {"type": "null"},
+                    "arrivalRemoteStandNullOverride": {"type": "boolean"},
+                    "arrivalRemoteStandSource": {"type": "null"},
+                    "departureRemoteStand": {"type": "null"},
+                    "departureRemoteStandNullOverride": {"type": "boolean"},
+                    "departureRemoteStandSource": {"type": "null"},
+                    "departureGate": {"type": "null"},
+                    "departureGateNullOverride": {"type": "boolean"},
+                    "departureGateSource": {"type": "null"},
+                    "arrivalGate": {"type": "null"},
+                    "arrivalGateNullOverride": {"type": "boolean"},
+                    "arrivalGateSource": {"type": "null"},
+                    "arrivalServiceProvider": {"type": ["null", "string"]},
+                    "arrivalServiceProviderNullOverride": {"type": "boolean"},
+                    "arrivalServiceProviderSource": {"type": ["null", "string"]},
+                    "departureServiceProvider": {"type": ["null", "string"]},
+                    "departureServiceProviderNullOverride": {"type": "boolean"},
+                    "departureServiceProviderSource": {"type": ["null", "string"]},
+                    "serviceType": {"type": ["null", "string"]},
+                    "serviceTypeNullOverride": {"type": "boolean"},
+                    "serviceTypeSource": {"type": ["null", "string"]},
+                    "serviceActivity": {"type": ["null", "string"]},
+                    "serviceActivityNullOverride": {"type": "boolean"},
+                    "serviceActivitySource": {"type": ["null", "string"]},
+                    "serviceSubtype": {"type": ["null", "string"]},
+                    "serviceSubtypeNullOverride": {"type": "boolean"},
+                    "serviceSubtypeSource": {"type": ["null", "string"]},
+                    "serviceCategory": {"type": ["null", "string"]},
+                    "serviceCategoryNullOverride": {"type": "boolean"},
+                    "serviceCategorySource": {"type": ["null", "string"]},
+                    "routingInformation": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "departureAirport": {"type": ["null", "string"]},
+                                "arrivalAirport": {"type": ["null", "string"]},
+                                "sequenceNumber": {"type": "integer"}
+                            },
+                            "required": [
+                                "arrivalAirport",
+                                "departureAirport",
+                                "sequenceNumber"
+                            ]
+                        }
+                    },
+                    "lifeCycleStatus": {"type": ["null", "string"]},
+                    "lifeCycleStatusSource": {"type": ["null", "string"]},
+                    "lifeCycleStatusLastUpdated": {
+                        "anyOf": [
+                            {"type": "null"},
+                            {"type": "array", "items": {"type": "integer"}}
+                        ]
+                    },
+                    "overnightIndicator": {"type": "integer"},
+                    "callSign": {"type": "null"},
+                    "callSignSource": {"type": "null"},
+                    "callSignNullOverride": {"type": "boolean"},
+                    "flightPeriod": {
+                        "type": "object",
+                        "properties": {
+                            "id": {"type": "null"},
+                            "flight": {
+                                "type": "object",
+                                "properties": {
+                                    "customerId": {"type": "string"},
+                                    "airlineCode": {"type": "string"},
+                                    "flightNumber": {"type": "integer"},
+                                    "operationalSuffix": {
+                                        "type": ["null", "string"]
+                                    },
+                                    "legType": {"type": "null"},
+                                    "functionalAlerts": {"type": "array"},
+                                    "refAirport": {"type": "string"},
+                                    "localDataAirport": {"type": "null"},
+                                    "legPeriodCount": {"type": "integer"}
+                                },
+                                "required": [
+                                    "airlineCode",
+                                    "customerId",
+                                    "flightNumber",
+                                    "functionalAlerts",
+                                    "legPeriodCount",
+                                    "legType",
+                                    "localDataAirport",
+                                    "operationalSuffix",
+                                    "refAirport"
+                                ]
+                            },
+                            "source": {"type": ["null", "string"]},
+                            "adhoc": {"type": "boolean"},
+                            "daysOfOperation": {
+                                "type": "array",
+                                "items": {"type": "string"}
+                            },
+                            "departureStation": {"type": ["null", "string"]},
+                            "arrivalStation": {"type": ["null", "string"]},
+                            "departurePeriodStartDate": {
+                                "anyOf": [
+                                    {"type": "null"},
+                                    {"type": "array", "items": {"type": "integer"}}
+                                ]
+                            },
+                            "departurePeriodEndDate": {
+                                "anyOf": [
+                                    {"type": "null"},
+                                    {"type": "array", "items": {"type": "integer"}}
+                                ]
+                            },
+                            "publicationStatus": {"type": "null"},
+                            "legPeriods": {"type": "array"},
+                            "legPeriodOverrides": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "departureStation": {"type": "string"},
+                                        "arrivalStation": {"type": "string"},
+                                        "nbOfSeats": {"type": "integer"},
+                                        "partnershipSpec": {"type": "null"}
+                                    },
+                                    "required": [
+                                        "arrivalStation",
+                                        "departureStation",
+                                        "nbOfSeats",
+                                        "partnershipSpec"
+                                    ]
+                                }
+                            },
+                            "deletionFlag": {"type": ["null", "boolean"]},
+                            "deletionFlagSource": {"type": ["null", "string"]},
+                            "deletionDate": {
+                                "anyOf": [
+                                    {"type": "null"},
+                                    {"type": "array", "items": {"type": "integer"}}
+                                ]
+                            },
+                            "lifeCycleStatus": {"type": "string"},
+                            "lifeCycleStatusSource": {"type": ["null", "string"]},
+                            "lifeCycleStatusLastUpdated": {
+                                "anyOf": [
+                                    {"type": "null"},
+                                    {"type": "array", "items": {"type": "integer"}}
+                                ]
+                            },
+                            "trafficType": {"type": ["null", "string"]},
+                            "trafficTypeNullOverride": {"type": "boolean"},
+                            "trafficTypeSource": {"type": ["null", "string"]},
+                            "originFlightAirport": {"type": ["null", "string"]},
+                            "originFlightAirportNullOverride": {"type": "boolean"},
+                            "originFlightAirportSource": {
+                                "type": ["null", "string"]
+                            },
+                            "destFlightAirport": {"type": ["null", "string"]},
+                            "destFlightAirportNullOverride": {"type": "boolean"},
+                            "destFlightAirportSource": {"type": ["null", "string"]},
+                            "esbAptcorrelationId": {"type": ["null", "string"]},
+                            "functionalAlerts": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {"type": ["null", "string"]},
+                                        "scope": {"type": "string"},
+                                        "activity": {"type": "string"},
+                                        "messageType": {"type": "string"},
+                                        "severity": {"type": "string"},
+                                        "flight": {"type": "null"},
+                                        "flightPeriod": {"type": "null"},
+                                        "legPeriod": {"type": "null"},
+                                        "startOfImpactedPeriod": {
+                                            "anyOf": [
+                                                {"type": "null"},
+                                                {
+                                                    "type": "array",
+                                                    "items": {"type": "integer"}
+                                                }
+                                            ]
+                                        },
+                                        "endOfImpactedPeriod": {
+                                            "anyOf": [
+                                                {"type": "null"},
+                                                {
+                                                    "type": "array",
+                                                    "items": {"type": "integer"}
+                                                }
+                                            ]
+                                        },
+                                        "impactedResource": {"type": "string"},
+                                        "airport": {"type": "string"},
+                                        "message": {"type": "string"},
+                                        "creationDate": {"type": "integer"},
+                                        "messageCode": {"type": "integer"},
+                                        "messageData": {
+                                            "type": "object",
+                                            "properties": {
+                                                "%fieldName%": {"type": "string"},
+                                                "%retainedValue%": {
+                                                    "type": "string"
+                                                },
+                                                "%value%": {"type": "string"},
+                                                "%source%": {"type": "string"}
+                                            }
+                                        }
+                                    },
+                                    "required": [
+                                        "activity",
+                                        "airport",
+                                        "creationDate",
+                                        "endOfImpactedPeriod",
+                                        "flight",
+                                        "flightPeriod",
+                                        "id",
+                                        "impactedResource",
+                                        "legPeriod",
+                                        "message",
+                                        "messageCode",
+                                        "messageData",
+                                        "messageType",
+                                        "scope",
+                                        "severity",
+                                        "startOfImpactedPeriod"
+                                    ]
+                                }
+                            },
+                            "localDataAirport": {"type": ["null", "string"]},
+                            "dummyFlightPeriod": {"type": "boolean"},
+                            "marketingFlightPeriod": {"type": "boolean"},
+                            "clientRequest": {"type": "boolean"},
+                            "isLocalTime": {"type": "boolean"}
+                        },
+                        "required": [
+                            "adhoc",
+                            "arrivalStation",
+                            "clientRequest",
+                            "daysOfOperation",
+                            "deletionDate",
+                            "deletionFlag",
+                            "deletionFlagSource",
+                            "departurePeriodEndDate",
+                            "departurePeriodStartDate",
+                            "departureStation",
+                            "destFlightAirport",
+                            "destFlightAirportNullOverride",
+                            "destFlightAirportSource",
+                            "dummyFlightPeriod",
+                            "esbAptcorrelationId",
+                            "flight",
+                            "functionalAlerts",
+                            "id",
+                            "isLocalTime",
+                            "legPeriodOverrides",
+                            "legPeriods",
+                            "lifeCycleStatus",
+                            "lifeCycleStatusLastUpdated",
+                            "lifeCycleStatusSource",
+                            "localDataAirport",
+                            "marketingFlightPeriod",
+                            "originFlightAirport",
+                            "originFlightAirportNullOverride",
+                            "originFlightAirportSource",
+                            "publicationStatus",
+                            "source",
+                            "trafficType",
+                            "trafficTypeNullOverride",
+                            "trafficTypeSource"
+                        ]
+                    },
+                    "flightTransitLayover": {"type": "integer"},
+                    "paxCounters": {"type": "null"},
+                    "seatsByCabin": {"type": "object"},
+                    "aircraftRegistration": {"type": "null"},
+                    "partnerships": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "airlineCode": {"type": "string"},
+                                "airlineName": {"type": ["null", "string"]},
+                                "flightNumber": {"type": "integer"},
+                                "operationalSuffix": {"type": ["null", "string"]},
+                                "codeShareType": {"type": "string"}
+                            },
+                            "required": [
+                                "airlineCode",
+                                "airlineName",
+                                "codeShareType",
+                                "flightNumber",
+                                "operationalSuffix"
+                            ]
+                        }
+                    },
+                    "partnershipsNullOverride": {"type": "boolean"},
+                    "partnershipsSource": {"type": ["null", "string"]},
+                    "codeShareType": {"type": "string"},
+                    "originFlightStation": {"type": ["null", "string"]},
+                    "destinationFlightStation": {"type": ["null", "string"]},
+                    "securityLevel": {"type": ["null", "string"]},
+                    "securityLevelSource": {"type": ["null", "string"]},
+                    "securityLevelNullOverride": {"type": "boolean"},
+                    "externalIdentifiers": {"type": "array"},
+                    "loadingType": {"type": ["null", "string"]},
+                    "loadingTypeNullOverride": {"type": "boolean"},
+                    "loadingTypeSource": {"type": ["null", "string"]},
+                    "clientId": {"type": "null"},
+                    "clientIdNullOverride": {"type": "boolean"},
+                    "clientIdSource": {"type": "null"},
+                    "departureCnbIndicator": {"type": "null"},
+                    "departureCnbIndicatorNullOverride": {"type": "boolean"},
+                    "departureCnbIndicatorSource": {"type": "null"},
+                    "arrivalCnbIndicator": {"type": "null"},
+                    "arrivalCnbIndicatorNullOverride": {"type": "boolean"},
+                    "arrivalCnbIndicatorSource": {"type": "null"},
+                    "dayOrNightIndicator": {"type": "null"},
+                    "dayOrNightIndicatorNullOverride": {"type": "boolean"},
+                    "dayOrNightIndicatorSource": {"type": "null"},
+                    "functionalAlerts": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {"type": ["null", "string"]},
+                                "scope": {"type": "string"},
+                                "activity": {"type": "string"},
+                                "messageType": {"type": "string"},
+                                "severity": {"type": "string"},
+                                "flight": {"type": "null"},
+                                "flightPeriod": {"type": "null"},
+                                "legPeriod": {"type": "null"},
+                                "startOfImpactedPeriod": {
+                                    "anyOf": [
+                                        {"type": "null"},
+                                        {
+                                            "type": "array",
+                                            "items": {"type": "integer"}
+                                        }
+                                    ]
+                                },
+                                "endOfImpactedPeriod": {
+                                    "anyOf": [
+                                        {"type": "null"},
+                                        {
+                                            "type": "array",
+                                            "items": {"type": "integer"}
+                                        }
+                                    ]
+                                },
+                                "impactedResource": {"type": "string"},
+                                "airport": {"type": "string"},
+                                "message": {"type": "string"},
+                                "creationDate": {"type": "integer"},
+                                "messageCode": {"type": "integer"},
+                                "messageData": {
+                                    "type": "object",
+                                    "properties": {
+                                        "%fieldName%": {"type": "string"},
+                                        "%retainedValue%": {"type": "string"},
+                                        "%value%": {"type": "string"},
+                                        "%source%": {"type": "string"},
+                                        "%mdmType%": {"type": "string"},
+                                        "%mdmData%": {"type": "string"}
+                                    }
+                                }
+                            },
+                            "required": [
+                                "activity",
+                                "airport",
+                                "creationDate",
+                                "endOfImpactedPeriod",
+                                "flight",
+                                "flightPeriod",
+                                "id",
+                                "impactedResource",
+                                "legPeriod",
+                                "message",
+                                "messageCode",
+                                "messageData",
+                                "messageType",
+                                "scope",
+                                "severity",
+                                "startOfImpactedPeriod"
+                            ]
+                        }
+                    },
+                    "displayAirlineCode": {"type": ["null", "string"]},
+                    "displayAirlineCodeSource": {"type": ["null", "string"]},
+                    "displayFlightNumber": {"type": ["null", "string"]},
+                    "displayFlightNumberSource": {"type": ["null", "string"]},
+                    "trusted": {"type": "boolean"},
+                    "trustedSource": {"type": ["null", "string"]},
+                    "onwardFlightNumber": {"type": ["null", "string"]},
+                    "onwardFlightAirline": {"type": ["null", "string"]},
+                    "onwardFlightAiraftRotationLayover": {
+                        "type": ["null", "string"]
+                    },
+                    "onwardFlightOperationalSuffix": {"type": ["null", "string"]},
+                    "onwardFlightDayVariation": {"type": ["null", "string"]},
+                    "onwardFlightLocalDayVariation": {"type": ["null", "string"]},
+                    "onwardFlightNullOverride": {"type": "boolean"},
+                    "onwardFlightSource": {"type": ["null", "string"]},
+                    "onwardFlightFull": {"type": ["null", "string"]},
+                    "remark": {"type": ["null", "string"]},
+                    "remarkNullOverride": {"type": "boolean"},
+                    "remarkSource": {"type": ["null", "string"]},
+                    "cabinCapacities": {"type": "array"},
+                    "firstCapacity": {"type": ["integer", "null"]},
+                    "firstCapacityNullOverride": {"type": ["boolean", "null"]},
+                    "firstCapacitySource": {"type": ["null", "string"]},
+                    "businessCapacity": {"type": ["integer", "null"]},
+                    "businessCapacityNullOverride": {"type": ["boolean", "null"]},
+                    "businessCapacitySource": {"type": ["null", "string"]},
+                    "premiumEconomyCapacity": {"type": "null"},
+                    "premiumEconomyCapacityNullOverride": {"type": "boolean"},
+                    "premiumEconomyCapacitySource": {"type": "null"},
+                    "economyCapacity": {"type": ["integer", "null"]},
+                    "economyCapacityNullOverride": {"type": ["boolean", "null"]},
+                    "economyCapacitySource": {"type": ["null", "string"]},
+                    "dstFlag": {"type": "boolean"},
+                    "isArr": {"type": "boolean"},
+                    "utcToLtShiftDay": {"type": "integer"},
+                    "fromClient": {"type": "boolean"},
+                    "localDataAirport": {"type": ["null", "string"]},
+                    "periodStartDate": {
+                        "type": "array",
+                        "items": {"type": "integer"}
+                    },
+                    "periodEndDate": {
+                        "type": "array",
+                        "items": {"type": "integer"}
+                    },
+                    "isLocalTime": {"type": "boolean"}
+                },
+                "required": [
+                    "adhoc",
+                    "aircraftICAOGroup",
+                    "aircraftMaxPax",
+                    "aircraftMaxPaxNullOverride",
+                    "aircraftMaxPaxSource",
+                    "aircraftOwner",
+                    "aircraftOwnerNullOverride",
+                    "aircraftOwnerSource",
+                    "aircraftRegistration",
+                    "aircraftSeats",
+                    "aircraftSeatsNullOverride",
+                    "aircraftSeatsSource",
+                    "aircraftType",
+                    "aircraftTypeNullOverride",
+                    "aircraftTypeSource",
+                    "arrPeriodDaysOfOp",
+                    "arrivalAircraftTerminal",
+                    "arrivalAircraftTerminalNullOverride",
+                    "arrivalAircraftTerminalSource",
+                    "arrivalAirport",
+                    "arrivalCnbIndicator",
+                    "arrivalCnbIndicatorNullOverride",
+                    "arrivalCnbIndicatorSource",
+                    "arrivalGate",
+                    "arrivalGateNullOverride",
+                    "arrivalGateSource",
+                    "arrivalRemoteStand",
+                    "arrivalRemoteStandNullOverride",
+                    "arrivalRemoteStandSource",
+                    "arrivalServiceProvider",
+                    "arrivalServiceProviderNullOverride",
+                    "arrivalServiceProviderSource",
+                    "arrivalStand",
+                    "arrivalStandNullOverride",
+                    "arrivalStandSource",
+                    "arrivalTerminal",
+                    "arrivalTerminalNullOverride",
+                    "arrivalTerminalSource",
+                    "arrivalTime",
+                    "arrivalTimeNullOverride",
+                    "arrivalTimeSource",
+                    "businessCapacity",
+                    "businessCapacityNullOverride",
+                    "businessCapacitySource",
+                    "cabinCapacities",
+                    "callSign",
+                    "callSignNullOverride",
+                    "callSignSource",
+                    "clientId",
+                    "clientIdNullOverride",
+                    "clientIdSource",
+                    "codeShareType",
+                    "dayOrNightIndicator",
+                    "dayOrNightIndicatorNullOverride",
+                    "dayOrNightIndicatorSource",
+                    "depPeriodDaysOfOp",
+                    "departureAircraftTerminal",
+                    "departureAircraftTerminalNullOverride",
+                    "departureAircraftTerminalSource",
+                    "departureAirport",
+                    "departureCnbIndicator",
+                    "departureCnbIndicatorNullOverride",
+                    "departureCnbIndicatorSource",
+                    "departureGate",
+                    "departureGateNullOverride",
+                    "departureGateSource",
+                    "departureRemoteStand",
+                    "departureRemoteStandNullOverride",
+                    "departureRemoteStandSource",
+                    "departureServiceProvider",
+                    "departureServiceProviderNullOverride",
+                    "departureServiceProviderSource",
+                    "departureStand",
+                    "departureStandNullOverride",
+                    "departureStandSource",
+                    "departureTerminal",
+                    "departureTerminalNullOverride",
+                    "departureTerminalSource",
+                    "departureTime",
+                    "departureTimeNullOverride",
+                    "departureTimeSource",
+                    "destinationFlightStation",
+                    "displayAirlineCode",
+                    "displayAirlineCodeSource",
+                    "displayFlightNumber",
+                    "displayFlightNumberSource",
+                    "dstFlag",
+                    "economyCapacity",
+                    "economyCapacityNullOverride",
+                    "economyCapacitySource",
+                    "endOfArrivalPeriod",
+                    "endOfDeparturePeriod",
+                    "externalIdentifiers",
+                    "firstCapacity",
+                    "firstCapacityNullOverride",
+                    "firstCapacitySource",
+                    "flight",
+                    "flightPeriod",
+                    "flightTransitLayover",
+                    "fromClient",
+                    "fromSources",
+                    "functionalAlerts",
+                    "id",
+                    "isArr",
+                    "isLocalTime",
+                    "lifeCycleStatus",
+                    "lifeCycleStatusLastUpdated",
+                    "lifeCycleStatusSource",
+                    "loadingType",
+                    "loadingTypeNullOverride",
+                    "loadingTypeSource",
+                    "localDataAirport",
+                    "onwardFlightAiraftRotationLayover",
+                    "onwardFlightAirline",
+                    "onwardFlightDayVariation",
+                    "onwardFlightFull",
+                    "onwardFlightLocalDayVariation",
+                    "onwardFlightNullOverride",
+                    "onwardFlightNumber",
+                    "onwardFlightOperationalSuffix",
+                    "onwardFlightSource",
+                    "originFlightStation",
+                    "overnightIndicator",
+                    "partnerships",
+                    "partnershipsNullOverride",
+                    "partnershipsSource",
+                    "paxCounters",
+                    "periodEndDate",
+                    "periodStartDate",
+                    "premiumEconomyCapacity",
+                    "premiumEconomyCapacityNullOverride",
+                    "premiumEconomyCapacitySource",
+                    "remark",
+                    "remarkNullOverride",
+                    "remarkSource",
+                    "routingInformation",
+                    "seatsByCabin",
+                    "securityLevel",
+                    "securityLevelNullOverride",
+                    "securityLevelSource",
+                    "serviceActivity",
+                    "serviceActivityNullOverride",
+                    "serviceActivitySource",
+                    "serviceCategory",
+                    "serviceCategoryNullOverride",
+                    "serviceCategorySource",
+                    "serviceSubtype",
+                    "serviceSubtypeNullOverride",
+                    "serviceSubtypeSource",
+                    "serviceType",
+                    "serviceTypeNullOverride",
+                    "serviceTypeSource",
+                    "startOfArrivalPeriod",
+                    "startOfDeparturePeriod",
+                    "trusted",
+                    "trustedSource",
+                    "utcToLtShiftDay"
+                ]
+            }
+        },
+        "totalResults": {"type": ["integer", "null"]}
+    },
+    "required": [
+        "cannedErrorInformation",
+        "content",
+        "generalErrorInformation",
+        "generalProcessingStatus",
+        "totalResults"
+    ]
+}

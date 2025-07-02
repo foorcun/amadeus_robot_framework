@@ -1,0 +1,92 @@
+{
+    "customerId": "{{ data.customer_id }}",
+    "name": "{{ data.name }}",
+    "periods": [
+        {
+            "periodId": {{ data.periodId | default('null') | replace('"null"', 'null') }},
+            "deleted": {{ data.deleted | default('null') | replace('"null"', 'null') }},
+            "startDateTime": {{ data.periods_startDateTime | default('null') | replace('"null"', 'null') if data.periods_startDateTime == 'null' else '"' ~ data.periods_startDateTime ~ '"' }},
+            "endDateTime": {{ data.periods_endDateTime | default('null') | replace('"null"', 'null') if data.periods_endDateTime == 'null' else '"' ~ data.periods_endDateTime ~ '"' }},
+            "allowedSecurityLevelArrival": [
+                {% for level in data.periods_allowedSecurityLevelArrival %}
+                {
+                    "value": "{{ level }}"
+                }{{ "," if not loop.last }}
+                {% endfor %}
+            ],
+            "allowedSecurityLevelDeparture": [
+                {% for level in data.periods_allowedSecurityLevelDeparture %}
+                {
+                    "value": "{{ level }}"
+                }{{ "," if not loop.last }}
+                {% endfor %}
+            ],
+            "type": "{{ data.periods_type }}",
+            "bearing": {{ data.periods_bearing }},
+            "aircraftCapacity": {{ data.periods_aircraftCapacity | default('null') | replace('"null"', 'null') if data.periods_aircraftCapacity == 'null' else '"' ~ data.periods_aircraftCapacity ~ '"' }},
+            "dimension": {
+                "length": {{ data.periods_dimension_length }},
+                "width": {{ data.periods_dimension_width }}
+            },
+            "wingspanAllowance": {
+                "length": {{ data.periods_wingspanAllowance_length }},
+                "width": {{ data.periods_wingspanAllowance_width }}
+            },
+            "positionNew": {
+                "latitude": {{ data.periods_positionNew_latitude }},
+                "longitude": {{ data.periods_positionNew_longitude }}
+            }
+        }
+    ],
+    "connections": {
+        {% if data.connections_gateDirectionalConnection is defined %}
+        "gateDirectionalConnection": [
+            {% for connection in data.connections_gateDirectionalConnection %}
+            {
+                "targetResource": {
+                    "id": "{{ connection.targetResource.id }}",
+                    "dataType": "GAT"
+                },
+                "startDateTime": {{ connection.startDateTime | default('null') | replace('"null"', 'null') if connection.startDateTime == 'null' else '"' ~ connection.startDateTime ~ '"' }},
+                "endDateTime": {{ connection.endDateTime | default('null') | replace('"null"', 'null') if connection.endDateTime == 'null' else '"' ~ connection.endDateTime ~ '"' }},
+                "direction": "{{ connection.direction }}"
+            }{{ "," if not loop.last }}
+            {% endfor %}
+        ],
+        {% else %}
+        "gateDirectionalConnection": [],
+        {% endif %}
+        {% if data.connections_equipmentConnection is defined %}
+        "equipmentConnection": [
+            {% for equipment in data.connections_equipmentConnection %}
+            {
+                "targetResource": {
+                    "type": "{{ equipment.targetResource.type }}",
+                    "name": "{{ equipment.targetResource.name }}"
+                },
+                "startDateTime": {{ equipment.startDateTime | default('null') | replace('"null"', 'null') if equipment.startDateTime == 'null' else '"' ~ equipment.startDateTime ~ '"' }},
+                "endDateTime": {{ equipment.startDateTime | default('null') | replace('"null"', 'null') if equipment.startDateTime == 'null' else '"' ~ equipment.startDateTime ~ '"' }}
+            }{{ "," if not loop.last }}
+            {% endfor %}
+        ],
+        {% else %}
+        "equipmentConnection": [],
+        {% endif %}
+        {% if data.connections_airbridgeConnection is defined %}
+        "airbridgeConnection": [
+            {% for airbridge in data.connections_airbridgeConnection %}
+            {
+                "targetResource": {
+                    "type": "{{ airbridge.targetResource.type }}",
+                    "name": "{{ airbridge.targetResource.name }}"
+                },
+                "startDateTime": {{ airbridge.startDateTime | default('null') | replace('"null"', 'null') if airbridge.startDateTime == 'null' else '"' ~ airbridge.startDateTime ~ '"' }},
+                "endDateTime": {{ airbridge.startDateTime | default('null') | replace('"null"', 'null') if airbridge.startDateTime == 'null' else '"' ~ airbridge.startDateTime ~ '"' }}
+            }{{ "," if not loop.last }}
+            {% endfor %}
+        ],
+        {% else %}
+        "airbridgeConnection": []
+        {% endif %}
+    }
+}

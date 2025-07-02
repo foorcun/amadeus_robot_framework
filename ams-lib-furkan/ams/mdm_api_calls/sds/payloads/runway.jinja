@@ -1,0 +1,15 @@
+{
+    "id": null,
+    "customerId": "{{ data.customerId }}",
+    "airport": {
+        "id": "{{ data.airport_id }}",
+        "iataCode": "{{ data.airport_iataCode }}",
+        "icaoCode": "{{ data.airport_icaoCode }}",
+        "timezone": "{{ data.airport_timezone }}",
+        "name": "{{ data.airport_name }}"
+    },
+    "name": "{{ data.name }}",
+    "direction1": {{'"' ~ data.direction1 ~ '"' if data.direction1 is not none else 'null' }},
+    "direction2": {{'"' ~ data.direction2 ~ '"' if data.direction2 is not none else 'null' }},
+    "defaultUsage": {{'"' ~ data.defaultUsage ~ '"' if data.defaultUsage is not none else 'null' }}
+}

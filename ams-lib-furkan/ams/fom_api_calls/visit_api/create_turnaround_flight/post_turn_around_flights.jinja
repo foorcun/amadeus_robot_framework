@@ -1,0 +1,34 @@
+{
+    "visit": [{
+        "inboundMovement": {
+            "airline": {"value": "{{data["Inairline"]}}"},
+            "flightNumber": {"value": {{data["InflightNumber"] }}},
+            "departureAirport": {"value": "{{data["IndepartureAirport"]}}"},
+            "arrivalAirport": {"value": "{{ data["InarrivalAirport"] }}"},
+            "registration": {"value":{% if data["Inregistration"] %} "{{ data["Inregistration"] }}" {% else %} null {% endif %}},
+            "callSign": {"value":{% if data["IncallSign"] %} "{{ data["IncallSign"] }}" {% else %} null {% endif %}},
+            "type": "{{data["Intype"]}}",
+            "operationTimeDuration": {{ data["InoperationTimeDuration"] }},
+            "aircraftType": {"value": "{{ data["InaircraftType"]}}"},
+            "dataElement": [],
+            "operationalSuffix": {% if data["InoperationalSuffix"] %} "{{ data["InoperationalSuffix"] }}" {% else %} null {% endif %},
+            "serviceType": {"value": "{{ data["InserviceType"]}}"},
+            "computedFlightDesignator": {% if data["IncomputedFlightDesignator"] %} "{{ data["IncomputedFlightDesignator"] }}" {% else %} null {% endif %}
+        },
+        "outboundMovement": {
+            "airline": {"value": "{{data["Inairline"]}}"},
+            "flightNumber": {"value": {{data["OutflightNumber"] }}},
+            "departureAirport": {"value": "{{ data["OutdepartureAirport"] }}"},
+            "arrivalAirport": {"value": "{{ data["OutarrivalAirport"] }}"},
+            "registration": {"value":{% if data["Inregistration"] %} "{{ data["Inregistration"] }}" {% else %} null {% endif %}},
+            "callSign": {"value":{% if data["IncallSign"] %} "{{ data["IncallSign"] }}" {% else %} null {% endif %}},
+            "type": "{{data["Outtype"]}}",
+            "operationTimeDuration": {{ data["OutoperationTimeDuration"] }},
+            "aircraftType": {"value": "{{ data["InaircraftType"]}}"},
+            "dataElement": [],
+            "operationalSuffix": {% if data["InoperationalSuffix"] %} "{{ data["InoperationalSuffix"] }}" {% else %} null {% endif %},
+            "serviceType": {"value": "{{ data["InserviceType"]}}"},
+            "computedFlightDesignator": {% if data["IncomputedFlightDesignator"] %} "{{ data["IncomputedFlightDesignator"] }}" {% else %} null {% endif %}
+        }
+    }]
+}

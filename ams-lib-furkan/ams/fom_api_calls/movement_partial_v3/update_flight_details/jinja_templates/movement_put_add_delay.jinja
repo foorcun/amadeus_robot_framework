@@ -1,0 +1,21 @@
+{
+    'id': '{{ data.id }}',
+    'irregularityDelay': [{
+            'departureOrArrival': '{{ data.departureOrArrival }}',
+            'reasonCode': '{{ data.reasonCode }}',
+            'category': '{{ data.category }}',
+            'alphaCode': '{{ data.alphaCode }}',
+            'priority': {{ data.priority }},
+            'subDelays':[],
+            'value': {
+                'freeTextObject': {
+                    'value': '{{ data.freeTextObject }}'
+                },
+                'durationObject': {
+                    'value': '{{ data.durationObject }}'
+                }
+            }
+        }
+    ],
+    'dataElement': []
+}

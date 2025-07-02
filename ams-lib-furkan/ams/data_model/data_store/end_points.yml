@@ -1,0 +1,102 @@
+vip:
+  leg_periods_manual: /vip/rest-services/v1/legperiods/manual
+  leg_periods_all:  /vip/rest-services/v1/legperiods/all
+  leg_period_orphans: /vip/rest-services/v1/legperiods/orphans
+  leg_period_multiple_flights: /vip/rest-services/v1/legperiods/multipleFlights
+  leg_periods_delete:  /vip/rest-services/v1/legperiods/all/{id}
+  v1:
+    legperiods_all: /vip/rest-services/v1/legperiods/all
+    legperiods_all_by_id: /vip/rest-services/v1/legperiods/all/{id}
+    seasons: /vip/rest-services/v1/seasons
+    exports: /vip/rest-services/v1/exports
+    cannedmessages: /vip/rest-services/v1/cannedmessages
+    statsbatches: /vip/rest-services/v1/messages/statsbatches
+
+mdm:
+  aircraft:
+    aircraft: /sds/data/v5/aircraft
+    count: /sds/data/v5/aircraft/count
+    registrationId: /sds/data/v5/aircraft/registrationId
+    aircraftType: /sds/data/v6/aircraftType
+    aircraftTypeCount: /sds/data/v6/aircraftType/count
+    aircraftTypeGroup: /sds/data/v5/aircraftTypeGroup
+    designGroup: /sds/data/v6/aircraftType/icao/designGroup
+    iata: /sds/data/v6/aircraftType/iata
+    icao: /sds/data/v6/aircraftType/icao
+  airline:
+    count: /sds/data/v4/airline/count
+    list: /sds/data/v4/airline/list
+    byCode: /sds/data/v4/airline/byCode
+    save: /sds/data/v4/airline/save
+    airlineGroup: /sds/data/v4/airlineGroup
+    delete: /sds/data/v4/airline/delete
+  airport:
+    list: /sds/data/v5/airport/list
+    byCode: /sds/data/v5/airport/byCode
+    listWithCustomizedNames: /sds/data/v5/airport/listwithCustomizedNames
+  baggage_belt_all: /sds/data/v4/arrivalBaggageBelt
+  baggage_belt_count: /sds/data/v4/arrivalBaggageBelt/count
+  baggage_belt_group_all: /sds/data/v4/arrivalBaggageBeltGroup
+  check_in_desk_all: /sds/data/v4/checkInDesk
+  check_in_desk_count: /sds/data/v4/checkInDesk/count
+  check_in_desk_group: sds/data/v4/checkInDeskGroup
+  city:
+    count: /sds/data/v4/city/count
+    list: /sds/data/v4/city/list
+  country:
+    count: /sds/data/v5/country/count 
+    list:  /sds/data/v5/country/list
+  delay:
+    list: /sds/data/v3/delay/list
+    count: /sds/data/v3/delay/count
+  equipment:
+    count: /sds/data/v3/equipmentType/count
+    equipmentType: /sds/data/v3/equipmentType
+  flight_service_type:
+    list: /sds/data/v3/flightServiceType/list
+    listByCode: /sds/data/v3/flightServiceType/listByCode
+  gate_all: /sds/data/v4/gate
+  gate_count: /sds/data/v4/gate/count
+  gate_group_all: /sds/data/v4/gateGroup
+  stand:
+    stand:  /sds/data/v4/stand
+    count: /sds/data/v4/stand/count
+    name: /sds/data/v4/stand/name
+    standGroup: /sds/data/v4/standGroup
+  terminal_all: /sds/data/v4/terminal
+  terminal_count: /sds/data/v4/terminal/count
+  terminal_by_code: /sds/data/v4/terminal/code
+
+fom:
+  movements:
+    adhoc: /fom/rest-services/v3/movements/adhoc
+    partials: /fom/rest-services/v3/movements/partials
+    partial_update: /fom/rest-services/v3/movements/partials/{id}
+    delete: /fom/rest-services/v3/movements/{id}
+    internal_id: /fom/rest-services/v3/movements/internal-id/{id}
+  visits:
+    adhoc: /fom/rest-services/v3/visits/adhoc
+    movement: /fom/rest-services/v3/visits/movement
+    searches: /fom/rest-services/v4/visits/searches
+    partials: /fom/rest-services/v3/visits/partials/movement
+    additional_sources: /fom/rest-services/v3/visits/additionalsources
+
+frms: 
+  plan:
+    list: /rm/services/plans/list
+    find: /rm/services/plans/find/{id}
+
+fds:
+  deltaMovements: /fds/rest-services/v1/flights/history/deltaMovements
+
+esb:
+  status: /esb4/api/node/status
+  details: /esb4/api/node/details
+  cluster_summary: /esb4/api/node/cluster/summary
+  cluster_validate: /esb4/api/node/cluster/summary/validate
+  cluster_registry: /esb4/api/node/cluster/registry
+  queues_metrics: /esb4/api/node/queues/metrics
+  routing_rules: /esb4/api/node/route/rule/list
+  interfaces_descriptor: /esb4/api/node/interface/descriptor
+  interface_metrics: /esb4/api/node/metrics/{node}/{interface}
+  interface_properties: /esb4/api/node/property/list/{interface}

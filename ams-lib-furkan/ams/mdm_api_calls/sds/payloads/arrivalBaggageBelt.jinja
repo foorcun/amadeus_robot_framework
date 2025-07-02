@@ -1,0 +1,15 @@
+{
+  "customerId": "{{ data.customerId }}",
+  "periods": [
+    {
+      "maximumFlightCapacity": 20
+      {% if data.swingBelt is defined and data.swingBelt is not false %}
+    , "swingBelt": "{{ data.swingBelt }}"
+      {% endif %}
+    }
+  ],
+  "name": "{{ data.name }}",
+  "terminal": {
+    "id": "{{ data.terminalId }}"
+  }
+}

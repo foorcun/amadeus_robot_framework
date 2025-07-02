@@ -1,0 +1,15 @@
+{
+    'id': '{{ data.id }}',
+    'resource': [{
+            'resourceType': '{{ data.resourceType }}',
+            'departureOrArrival': '{{ data.departureOrArrival }}',
+            'allocation': [{
+                    'resourceId': {
+                        'id': '{{ data.resourceId }}'
+                    }
+                }
+            ]
+        }
+    ],
+    'dataElement': []
+}

@@ -1,0 +1,522 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "required": [
+        "airport",
+        "connections",
+        "customerId",
+        "event",
+        "externalCode",
+        "group",
+        "id",
+        "metaInfo",
+        "name",
+        "periods",
+        "version"
+    ],
+    "properties": {
+        "id": {
+            "type": "string"
+        },
+        "externalCode": {
+            "type": "string"
+        },
+        "customerId": {
+            "type": "string"
+        },
+        "version": {
+            "type": "string"
+        },
+        "metaInfo": {
+            "type": "null"
+        },
+        "airport": {
+            "type": "object",
+            "required": [
+                "customerId",
+                "dataType",
+                "externalCode",
+                "iataCode",
+                "icaoCode",
+                "id",
+                "name",
+                "ref"
+            ],
+            "properties": {
+                "ref": {
+                    "type": "object",
+                    "required": [
+                        "value"
+                    ],
+                    "properties": {
+                        "value": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string"
+                },
+                "externalCode": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "dataType": {
+                    "type": "string"
+                },
+                "customerId": {
+                    "type": "null"
+                },
+                "iataCode": {
+                    "type": "string"
+                },
+                "icaoCode": {
+                    "type": "string"
+                }
+            }
+        },
+        "name": {
+            "type": "string"
+        },
+        "periods": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "aircraftCapacity",
+                    "allowedSecurityLevelArrival",
+                    "allowedSecurityLevelDeparture",
+                    "bearing",
+                    "deleted",
+                    "dimension",
+                    "endDateTime",
+                    "periodExternalCode",
+                    "periodId",
+                    "position",
+                    "positionNew",
+                    "startDateTime",
+                    "supportedAircraftDesignGroupICAOCode",
+                    "type",
+                    "wingspanAllowance"
+                ],
+                "properties": {
+                    "periodId": {
+                        "type": "string"
+                    },
+                    "periodExternalCode": {
+                        "type": "string"
+                    },
+                    "deleted": {
+                        "type": "null"
+                    },
+                    "startDateTime": {
+                        "type": ["string", "null"]
+                    },
+                    "endDateTime": {
+                        "type":  ["string", "null"]
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "dimension": {
+                        "type": ["object", "null"],
+                        "required": [
+                            "length",
+                            "width"
+                        ],
+                        "properties": {
+                            "length": {
+                                "type": "number"
+                            },
+                            "width": {
+                                "type": "number"
+                            }
+                        }
+                    
+                    },
+                    "wingspanAllowance": {
+                        "type": ["object", "null"],
+                        "required": [
+                            "length",
+                            "width"
+                        ],
+                        "properties": {
+                            "length": {
+                                "type": "number"
+                            },
+                            "width": {
+                                "type": "number"
+                            }
+                        }
+                    }
+                    ,
+                    "position": {
+                        "type": ["object", "null"],
+                        "required": [
+                            "latitude",
+                            "longitude"
+                        ],
+                        "properties": {
+                            "latitude": {
+                                "type": "number"
+                            },
+                            "longitude": {
+                                "type": "number"
+                            }
+                        }
+                    
+                    },
+                    "positionNew": {
+                        "type": ["object", "null"],
+                        "required": [
+                            "latitude",
+                            "longitude"
+                        ],
+                        "properties": {
+                            "latitude": {
+                                "type": "number"
+                            },
+                            "longitude": {
+                                "type": "number"
+                            }
+                        }
+                    },
+                    "supportedAircraftDesignGroupICAOCode": {
+                        "type": "null"
+                    },
+                    "allowedSecurityLevelArrival": {
+                        "type": ["array", "null"],
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "value": {
+                                    "type": "integer"
+                                }
+                            },
+                            "required": [
+                                "value"
+                            ]
+                        }
+                    
+                    },
+                    "allowedSecurityLevelDeparture": {
+                        "type": ["array", "null"],
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "value": {
+                                    "type": "integer"
+                                }
+                            },
+                            "required": [
+                                "value"
+                            ]
+                        }
+                    },
+                    "aircraftCapacity": {
+                        "type": "integer"
+                    },
+                    "bearing": {
+                        "type": ["number", "null"]
+                    }
+                }
+            }
+        },
+        "connections": {
+            "type": "object",
+            "required": [
+                "airbridgeConnection",
+                "equipmentConnection",
+                "gateDirectionalConnection",
+                "parkingLineConnection"
+            ],
+            "properties": {
+                "airbridgeConnection": {
+                    "type": "null"
+                },
+                "equipmentConnection": {
+                    "oneOf": [
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "externalCode": {
+                                        "type": "string"
+                                    },
+                                    "customerId": {
+                                        "type": "string"
+                                    },
+                                    "version": {
+                                        "type": "null"
+                                    },
+                                    "metaInfo": {
+                                        "type": "null"
+                                    },
+                                    "startDateTime": {
+                                        "type": ["string", "null"]
+                                    },
+                                    "endDateTime": {
+                                        "type": ["string", "null"]
+                                    },
+                                    "targetResource": {
+                                        "type": "object",
+                                        "properties": {
+                                            "dataId": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "value": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "value"
+                                                ]
+                                            },
+                                            "externalCode": {
+                                                "type": "string"
+                                            },
+                                            "customerId": {
+                                                "type": "string"
+                                            },
+                                            "version": {
+                                                "type": "null"
+                                            },
+                                            "metaInfo": {
+                                                "type": "null"
+                                            },
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "airport": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "ref": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "value": {
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "value"
+                                                        ]
+                                                    },
+                                                    "name": {
+                                                        "type": "string"
+                                                    },
+                                                    "externalCode": {
+                                                        "type": "string"
+                                                    },
+                                                    "id": {
+                                                        "type": "string"
+                                                    },
+                                                    "dataType": {
+                                                        "type": "string"
+                                                    },
+                                                    "customerId": {
+                                                        "type": "null"
+                                                    },
+                                                    "iataCode": {
+                                                        "type": "string"
+                                                    },
+                                                    "icaoCode": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "customerId",
+                                                    "dataType",
+                                                    "externalCode",
+                                                    "iataCode",
+                                                    "icaoCode",
+                                                    "id",
+                                                    "name",
+                                                    "ref"
+                                                ]
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "type": {
+                                                "type": "string"
+                                            },
+                                            "event": {
+                                                "type": "null"
+                                            },
+                                            "typeRef": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "string"
+                                                    },
+                                                    "externalCode": {
+                                                        "type": "string"
+                                                    },
+                                                    "customerId": {
+                                                        "type": "string"
+                                                    },
+                                                    "name": {
+                                                        "type": "string"
+                                                    },
+                                                    "dataType": {
+                                                        "type": "string"
+                                                    },
+                                                    "startDateTime": {
+                                                        "type": ["string", "null"]
+                                                    },
+                                                    "endDateTime": {
+                                                        "type": ["string", "null"]
+                                                    }
+                                                },
+                                                "required": [
+                                                    "customerId",
+                                                    "dataType",
+                                                    "endDateTime",
+                                                    "externalCode",
+                                                    "id",
+                                                    "name",
+                                                    "startDateTime"
+                                                ]
+                                            }
+                                        },
+                                        "required": [
+                                            "airport",
+                                            "customerId",
+                                            "dataId",
+                                            "event",
+                                            "externalCode",
+                                            "id",
+                                            "metaInfo",
+                                            "name",
+                                            "type",
+                                            "typeRef",
+                                            "version"
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "customerId",
+                                    "endDateTime",
+                                    "externalCode",
+                                    "id",
+                                    "metaInfo",
+                                    "startDateTime",
+                                    "targetResource",
+                                    "version"
+                                ]
+                            }
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+            },
+                "gateDirectionalConnection": {
+                    "oneOf": [
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "required": [
+                                    "customerId",
+                                    "direction",
+                                    "endDateTime",
+                                    "externalCode",
+                                    "id",
+                                    "metaInfo",
+                                    "startDateTime",
+                                    "targetResource",
+                                    "version"
+                                ],
+                                "properties": {
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "externalCode": {
+                                        "type": "string"
+                                    },
+                                    "customerId": {
+                                        "type": "string"
+                                    },
+                                    "version": {
+                                        "type": "null"
+                                    },
+                                    "metaInfo": {
+                                        "type": "null"
+                                    },
+                                    "startDateTime": {
+                                        "type": ["string", "null"]
+                                    },
+                                    "endDateTime": {
+                                        "type": ["string", "null"]
+                                    },
+                                    "direction": {
+                                        "type": "string"
+                                    },
+                                    "targetResource": {
+                                        "type": "object",
+                                        "required": [
+                                            "customerId",
+                                            "dataType",
+                                            "endDateTime",
+                                            "externalCode",
+                                            "id",
+                                            "name",
+                                            "startDateTime",
+                                            "terminalCode"
+                                        ],
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "externalCode": {
+                                                "type": "string"
+                                            },
+                                            "customerId": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "dataType": {
+                                                "type": "string"
+                                            },
+                                            "startDateTime": {
+                                                "type": ["string", "null"]
+                                            },
+                                            "endDateTime": {
+                                                "type": ["string", "null"]
+                                            },
+                                            "terminalCode": {
+                                                "type": ["string", "null"]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                }
+                },
+                "parkingLineConnection": {
+                    "type": "null"
+                }
+            }
+        },
+        "group": {
+            "type": "null"
+        },
+        "event": {
+            "type": "null"
+        }
+    }
+

@@ -1,0 +1,6 @@
+vip:
+  post_leg_periods_manual:
+    success: "generalProcessingStatus == 'OK' && generalErrorInformation == `[]` && cannedErrorInformation == `[]` && totalResults == `null`"
+    error: "generalProcessingStatus == 'ERROR' && length(generalErrorInformation) > 0 && length(cannedErrorInformation) > 0"
+    query_store:
+      leg_period_errors: "generalErrorInformation[*].details"

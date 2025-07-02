@@ -1,0 +1,124 @@
+default_generic_headers: &default_generic_headers
+  apt_customer_id: "{customer_id}"
+  legs_ref_airport: "{ref_airport_full}"
+  apt_transaction_originator: FUI
+  apt_correlation_id: "{apt_correlation_id}"
+  ref_airport: "{ref_airport}"
+  referer: /aodb/app/
+  Content-Type: application/json; charset=UTF-8
+  ams_ref_airport_ext: "{ref_airport}"
+  ams_ref_airport: "{ref_airport_full}"
+  visit_ref_airport: "{ref_airport_full}"
+  X-Requested-With: XMLHttpRequest
+  Accept: "application/json, text/plain, */*"
+default_auth_headers: &default_auth_headers
+  Content-Type: application/x-www-form-urlencoded
+  Cookie: "apt_customer_id={customer_id}; ref_airport={ref_airport}"
+  apt_customer_id: "{customer_id}"
+  Accept: "*/*"
+  Connection: keep-alive
+  X-Requested-With: XMLHttpRequest
+QA1:
+  server_url: &qa1_server_url https://qa.apt.nce.amadeus.net:10443
+  internal_server_url: *qa1_server_url
+  authentication_end_point: /authentication/v2/apt_security_check
+  auth_headers:
+    <<: *default_auth_headers
+    Origin: *qa1_server_url
+  generic_headers:
+    <<: *default_generic_headers
+    Origin: *qa1_server_url
+INT:
+  server_url: &int_server_url https://int.apt.nce.amadeus.net:10443
+  internal_server_url: *int_server_url
+  authentication_end_point: /authentication/v2/security-check
+  auth_headers:
+    <<: *default_auth_headers
+    Origin: *int_server_url
+    Host: int.apt.nce.amadeus.net:10443
+    Accept-Encoding: gzip, deflate, br
+  generic_headers:
+    <<: *default_generic_headers
+    Origin: *int_server_url
+  component_versions:
+    FOM: 9.3.100
+    FIDS: 3.0.1
+    CFG: 2.8.0
+QCP2:
+  server_url: &qcp2_server_url https://aptams-qcpazu-qcp2.apit.amadeus.net
+  internal_server_url: https://aptams-qcpazu-qcp2.app.tst-ne-dist01a.dist01.northeurope.tst.az.amadeus.net
+  authentication_end_point: /authentication/v2/security-check
+  auth_headers:
+    <<: *default_auth_headers
+    Origin: *qcp2_server_url
+    Host: aptams-qcpazu-qcp2.apit.amadeus.net
+    Accept-Encoding: gzip, deflate, br
+  generic_headers:
+    <<: *default_generic_headers
+    Origin: *qcp2_server_url
+EU2:
+  server_url: &uat_eu2_server_url https://eu2-uatest.apit.amadeus.net
+  internal_server_url: *uat_eu2_server_url
+  authentication_end_point: /authentication/v2/security-check
+  auth_headers:
+    <<: *default_auth_headers
+    Origin: *uat_eu2_server_url
+    Host: eu2-uatest.apit.amadeus.net
+    Accept-Encoding: gzip, deflate, br
+  generic_headers:
+    <<: *default_generic_headers
+    Origin: *uat_eu2_server_url
+EU5:
+  server_url: &uat_eu5_server_url https://aptams-uatazu-eu5.apit.amadeus.net
+  internal_server_url: *uat_eu5_server_url
+  authentication_end_point: /authentication/v2/security-check
+  auth_headers:
+    <<: *default_auth_headers
+    Origin: *uat_eu5_server_url
+    Host: aptams-uatazu-eu5.apit.amadeus.net
+    Accept-Encoding: gzip, deflate, br
+  generic_headers:
+    <<: *default_generic_headers
+    Origin: *uat_eu5_server_url
+DEV1:
+  server_url: &dev1_server_url https://aptams-devazu-dev1.apit.amadeus.net
+  internal_server_url: https://aptams-devazu-dev1.app.rnd-ne-ima02a.ima02.northeurope.rndx.az.amadeus.net
+  authentication_end_point: /authentication/v2/security-check
+  auth_headers:
+    <<: *default_auth_headers
+    Origin: *dev1_server_url
+    Host: aptams-devazu-dev1.apit.amadeus.net
+    Accept-Encoding: gzip, deflate, br, zstd
+  generic_headers:
+    <<: *default_generic_headers
+    Origin: *dev1_server_url
+DEV3:
+  server_url: &dev3_server_url https://aptams-devazu-dev3.apit.amadeus.net
+  internal_server_url: https://aptams-devazu-dev2.app.rnd-ne-ima02b.ima02.northeurope.rndx.az.amadeus.net
+  authentication_end_point: /authentication/v2/security-check
+  auth_headers:
+    <<: *default_auth_headers
+    Origin: *dev3_server_url
+    Host: aptams-devazu-dev3.apit.amadeus.net
+    Accept-Encoding: gzip, deflate, br, zstd
+  generic_headers:
+    <<: *default_generic_headers
+    Origin: *dev3_server_url
+# Personal server configuration:
+# The following points to a personal server running on a devbox.
+# If you would like to point to a personal server running localy,
+# please change the URLs below. For instance:
+# server_url: &ps_server_url https://aptams-localdev.app.127.0.0.1.nip.io
+# Host: aptams-localdev.app.127.0.0.1.nip.io
+PS:
+  server_url: &ps_server_url https://azrnelnx01059.rnd.amadeus.net:30001
+  internal_server_url: *ps_server_url
+  authentication_end_point: /authentication/v2/security-check
+  auth_headers:
+    <<: *default_auth_headers
+    Origin: *ps_server_url
+    Host: azrnelnx01059.rnd.amadeus.net:30001
+    Accept-Encoding: gzip, deflate, br, zstd
+  generic_headers:
+    <<: *default_generic_headers
+    Origin: *ps_server_url

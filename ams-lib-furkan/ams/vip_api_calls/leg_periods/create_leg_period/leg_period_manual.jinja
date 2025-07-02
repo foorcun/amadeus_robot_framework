@@ -1,0 +1,32 @@
+{
+    "flight": {
+        "customerId": "{{ data["customerId"] }}",
+        "airlineCode":{% if data["airlineCode"] %} "{{ data["airlineCode"] }}" {% else %} "{{ generate_airline_code() }}" {% endif %},
+        "flightNumber":{% if data["flightNumber"] %} "{{ data["flightNumber"] }}" {% else %} "{{ generate_flight_number(4) }}" {% endif %},
+        "operationalSuffix": ""
+    },
+    "adhoc": false,
+    "departureAirport":"{{ data["departureAirport"] }}",
+    "arrivalAirport":"{{ data["arrivalAirport"] }}",
+    "onwardFlightFull":{% if data["onwardFlightFull"] %} "{{ data["onwardFlightFull"] }}" {% else %} null {% endif %},
+    "departureTime":{{ data["departureTime"] }},
+    "startOfDeparturePeriod":{{ data["startOfDeparturePeriod"] }},
+    "endOfDeparturePeriod":{{ data["endOfDeparturePeriod"] }},
+    "depPeriodDaysOfOp":{{ data["depPeriodDaysOfOp"] }},
+    "arrivalTime":{{ data["arrivalTime"] }},
+    "startOfArrivalPeriod":{{ data["startOfArrivalPeriod"] }},
+    "endOfArrivalPeriod":{{ data["endOfArrivalPeriod"] }},
+    "arrPeriodDaysOfOp":{{ data["arrPeriodDaysOfOp"] }},
+    "aircraftType":"{{ data["aircraftType"] }}",
+    "serviceType":{% if data["serviceType"] %} "{{ data["serviceType"] }}" {% else %} "J" {% endif %},
+    "trusted":{% if data["trusted"] %} {{ data["trusted"] }} {% else %} true {% endif %},
+    "partnerships":{% if data["partnerships"] %} "{{ data["partnerships"] }}" {% else %} null {% endif %},
+    "remark":{% if data["remark"] %} "{{ data["remark"] }}" {% else %} "" {% endif %},
+    "departureTerminal":{% if data["departureTerminal"] %} "{{ data["departureTerminal"] }}" {% else %} "" {% endif %},
+    "departureAircraftTerminal":{% if data["departureAircraftTerminal"] %} "{{ data["departureAircraftTerminal"] }}" {% else %} "" {% endif %},
+    "firstCapacity":{% if data["firstCapacity"] %} "{{ data["firstCapacity"] }}" {% else %} "" {% endif %},
+    "businessCapacity":{% if data["businessCapacity"] %} "{{ data["businessCapacity"] }}" {% else %} "" {% endif %},
+    "premiumEconomyCapacity":{% if data["premiumEconomyCapacity"] %} "{{ data["premiumEconomyCapacity"] }}" {% else %} "" {% endif %},
+    "economyCapacity":{% if data["economyCapacity"] %} "{{ data["economyCapacity"] }}" {% else %} "" {% endif %},
+    "isLocalTime":{% if data["isLocalTime"] %} {{ data["isLocalTime"] }} {% else %} false {% endif %}
+}

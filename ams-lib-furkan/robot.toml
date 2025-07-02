@@ -1,0 +1,3 @@
+python-path = ["ams", "."]
+output-dir = "reports"
+log-level = "TRACE"

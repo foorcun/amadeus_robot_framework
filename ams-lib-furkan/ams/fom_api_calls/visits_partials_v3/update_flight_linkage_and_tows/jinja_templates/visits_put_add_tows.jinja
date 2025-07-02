@@ -1,0 +1,47 @@
+{
+    'inboundMovement': {
+        'id': '{{ data.id }}',
+        'dataElement': []
+    },
+    'towing': [{
+            'dataElement': [],
+            'externalIdentifier': {
+                'identifier': '{{ data.identifier }}'
+            },
+            'operationTimeDuration': [{
+                    'timeType': '{{ data.timeType }}',
+                    'operationQualifier': '{{ data.operationQualifier }}',
+                    'value': {
+                        'time': '{{ data.time }}'
+                    }
+                }, {
+                    'timeType': '{{ data.timeType1 }}',
+                    'operationQualifier': '{{ data.operationQualifier1 }}',
+                    'value': {
+                        'time': '{{ data.time1 }}'
+                    }
+                }
+            ],
+            'resource': [{
+                    'resourceType': '{{ data.resourceType }}',
+                    'departureOrArrival': '{{ data.departureOrArrival }}',
+                    'allocation': [{
+                            'resourceId': {
+                                'id': '{{ data.resourceId }}'
+                            }
+                        }
+                    ]
+                }
+            ],
+            'legRemarkData': [{
+                    'freeTexts': [{
+                            'order': '{{ data.order }}',
+                            'text': '{{ data.text }}'
+                        }
+                    ],
+                    'qualifier': '{{ data.qualifier }}'
+                }
+            ]
+        }
+    ]
+}

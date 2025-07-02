@@ -1,0 +1,9 @@
+-i https://repository.rnd.amadeus.net/repository/api/pypi/pypimdw/simple
+forgestatic
+black
+beautifulsoup4
+pytest
+twine
+#Robot linter and formatter
+robotframework-tidy
+robotframework-robocop

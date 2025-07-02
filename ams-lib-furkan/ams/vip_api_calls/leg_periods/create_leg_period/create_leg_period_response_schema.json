@@ -1,0 +1,17 @@
+{
+    "type": "object",
+    "properties": {
+        "generalProcessingStatus": {"type": "string"},
+        "generalErrorInformation": {"type": "array"},
+        "cannedErrorInformation": {"type": "array"},
+        "content": {"type": "array"},
+        "totalResults": {"type": "null"}
+    },
+    "required": [
+        "cannedErrorInformation",
+        "content",
+        "generalErrorInformation",
+        "generalProcessingStatus",
+        "totalResults"
+    ]
+}

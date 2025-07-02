@@ -1,0 +1,159 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "generalProcessingStatus": {
+        "type": "string"
+      },
+      "content": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "inboundMovement": {
+              "type": "object",
+              "properties": {
+                "airline": { "type": "object" },
+                "flightNumber": { "type": "object" },
+                "departureAirport": { "type": "object" },
+                "arrivalAirport": { "type": "object" },
+                "flightDate": { "type": "object" },
+                "callSign": { "type": "object" },
+                "legDate": { "type": "object" },
+                "legDateLT": { "type": "object" },
+                "id": { "type": "string" },
+                "version": { "type": "integer" },
+                "lastUpdateTime": { "type": "string", "format": "date-time" },
+                "sourceLastUpdateTime": { "type": "string", "format": "date-time" },
+                "masterUUID": { "type": "string" },
+                "numericalIdentifier": { "type": "integer" },
+                "operationalDate": { "type": "object" },
+                "operationalDateLT": { "type": "object" },
+                "flightDateLT": { "type": "object" },
+                "type": { "type": "string" },
+                "flightStatus": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "visitInternalStatus": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "resourceAllocation": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "resource": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "resourceType": { "type": "string" },
+                      "departureOrArrival": { "type": "string" },
+                      "allocation": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "allocationId": { "type": "string" },
+                            "resourceId": {
+                              "type": "object",
+                              "properties": {
+                                "id": { "type": "string" },
+                                "source": { "type": "string" },
+                                "lockedSource": { "type": ["string", "null"] }
+                              }
+                            },
+                            "source": { "type": "string" },
+                            "lockedSource": { "type": ["string", "null"] }
+                          }
+                        }
+                      },
+                      "operation": { "type": ["string", "null"] }
+                    }
+                  }
+                },
+                "operationTimeDuration": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "timeType": { "type": "string" },
+                      "operationQualifier": { "type": "string" },
+                      "value": { "type": "object" },
+                      "hasWritePermission": { "type": "boolean" },
+                      "bestIndicator": { "type": "boolean" },
+                      "lockedSource": { "type": ["string", "null"] },
+                      "autoComputed": { "type": "boolean" }
+                    }
+                  }
+                },
+                "aircraftType": { "type": "object" },
+                "operationalStatus": { "type": "object" },
+                "serviceType": { "type": "object" },
+                "serviceActivity": { "type": "object" },
+                "serviceCategory": { "type": "object" },
+                "serviceSubType": { "type": "object" },
+                "SLA": { "type": "object" },
+                "associatedLegSchedule": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "repeatNumber": { "type": "object" },
+                      "value": { "type": "object" },
+                      "source": { "type": "string" },
+                      "lockedSource": { "type": ["string", "null"] }
+                    }
+                  }
+                },
+                "securityLevel": { "type": "object" },
+                "clearanceAgreement": { "type": "object" },
+                "dataElement": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "publicDisplay": { "type": "object" },
+                "plannedArrivalAptHistory": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "nextStand": { "type": "string" },
+                "goingToLastStand": { "type": "boolean" },
+                "securityLevelNew": { "type": "object" },
+                "aircraftStatus": { "type": "string" },
+                "nextPosition": {
+                  "type": "object",
+                  "properties": {
+                    "resourceType": { "type": "string" },
+                    "resourceName": { "type": "string" }
+                  }
+                },
+                "removeUnmatchLinkedFlightId": {
+                  "type": "object",
+                  "properties": {
+                    "remove": { "type": "boolean" }
+                  }
+                },
+                "multiAirportID": { "type": "string" }
+              }
+            },
+            "visitStatus": { "type": "object" },
+            "refAirport": { "type": "string" },
+            "valid": { "type": "object" },
+            "enableCancelDisruption": { "type": "boolean" }
+          }
+        }
+      }
+    }
+  }

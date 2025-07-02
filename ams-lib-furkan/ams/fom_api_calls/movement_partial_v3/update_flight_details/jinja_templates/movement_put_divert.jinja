@@ -1,0 +1,70 @@
+{
+    "event": [
+        {% if data.type == "DIVERT_CONTINUE" %}
+        {
+            "type": "{{ data.type }}",
+            "occurrenceTime": "{{ data.occurrenceTime }}",
+            "operationTimeDuration": [
+                {
+                    "timeType": "{{ data.timeType }}",
+                    "operationQualifier": "{{ data.operationQualifier }}",
+                    "value": {
+                        "time": "{{ data.time }}"
+                    }
+                }
+            ]
+        }
+        {% elif data.type == "GO_AROUND" %}
+        {
+            "type": "{{ data.type }}",
+            "occurrenceTime": "{{ data.occurrenceTime }}",
+            "operationTimeDuration": []
+        }
+        {% elif data.type == "RETURN_TO_RAMP_AND_CREATE" %}
+        {
+            "type": "{{ data.type }}",
+            "occurrenceTime": "{{ data.occurrenceTime }}",
+            "operationTimeDuration": [
+                {
+                    "timeType": "{{ data.timeType }}",
+                    "operationQualifier": "{{ data.operationQualifier }}",
+                    "value": {
+                        "time": "{{ data.time }}"
+                    }
+                }
+            ],
+            "copyDisruptionDataGroup": [
+                "{{ data.copyDisruptionDataGroup }}"
+            ]
+        }
+        {% elif data.type == "RETURN_FROM_AIRBORNE_AND_CREATE" %}
+        {
+            "type": "{{ data.type }}",
+            "occurrenceTime": "{{ data.occurrenceTime }}",
+            "operationTimeDuration": [
+                {
+                    "timeType": "{{ data.timeType }}",
+                    "operationQualifier": "{{ data.operationQualifier }}",
+                    "value": {
+                        "time": "{{ data.time }}"
+                    }
+                }
+            ]
+        }
+        {% elif data.type == "DIVERT_CANCEL" %}
+        {
+            "type": "{{ data.type }}",
+            "occurrenceTime": "{{ data.occurrenceTime }}",
+            "operationTimeDuration": []
+        }
+        {% endif %}
+    ],
+    {% if data.type == "RETURN_TO_RAMP_AND_CREATE" %}
+    "arrOperationalSuffix": {"value": "{{ data.arrOperationalSuffix }}"},
+    {% endif %}
+    {% if data.type == "DIVERT_CONTINUE" %}
+    "departureAirport": {"value": "{{ data.departureAirport }}" },
+    {% endif %}
+    "id":"{{ data.id }}",
+    "dataElement": []
+}

@@ -1,0 +1,4 @@
+# replace XXXXX with team chorus path (ex: CPS-ES2-EQS-MTC)
+team: XXXXX
+pylint_modules: ams
+pylint_extra_args: --fail-under=8.00

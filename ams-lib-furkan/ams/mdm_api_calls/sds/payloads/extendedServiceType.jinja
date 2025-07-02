@@ -1,0 +1,12 @@
+{
+    "customerId": "{{ data.customerId }}",
+    "code": "{{ data.code }}",
+    "flightActivity": "{{ data.flightActivity }}",
+    "flightCategory": "{{ data.flightCategory }}",
+    "flightType": "{{ data.flightType }}"
+    {% if data.iataServiceTypeId is defined and data.iataServiceTypeId is not none %}
+    , "iataServiceType": {
+        "id": "{{ data.iataServiceTypeId }}"
+    }
+    {% endif %}
+}
