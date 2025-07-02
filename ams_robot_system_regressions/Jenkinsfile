@@ -1,0 +1,131 @@
+node() {
+    deleteDir()
+    checkout scm
+    // Defining env level variables
+    // def params = utils.getParametersFromConfig(yamlFilePath)
+    // Extract variables from params for the robot command
+    def amsTools = load 'jenkins_regression/groovy_src/ams_tools.groovy'
+    def yamlFilePath = params.yamlFilePath ?: ''
+
+    // Call the method with defensive coding
+    try {
+        resolvedParams = amsTools.getParametersWithOverrides(yamlFilePath, params ?: [:])
+            echo 'Successfully loaded parameters from ams_tools'
+        } catch (Exception e) {
+            echo "Error calling getParametersWithOverrides: ${e.message}"
+    }
+    env.logLevel = resolvedParams.logLevel
+    env.libPath = resolvedParams.libPath
+    env.xunitReport = resolvedParams.xunitReport
+    env.reportOutputDir = resolvedParams.reportOutputDir
+    env.environment = resolvedParams.environment
+    env.org = resolvedParams.org
+    env.mode = resolvedParams.mode
+    env.testfolder = resolvedParams.testfolder
+    emailRecipients = resolvedParams.emailRecipients
+    credentialID = resolvedParams.credentialID
+    if (mode != 'mock' && mode != 'cyberark') {
+        echo 'Using credentials for authentication'
+        withCredentials([usernamePassword(credentialsId: credentialID,
+            usernameVariable: 'USERNAME',
+            passwordVariable: 'PASSWORD')]) {
+            // Update the credentials for use in subsequent stages
+            env.robotUser = USERNAME
+            env.robotPwd = PASSWORD
+            echo "Credentials have been set for ${environment} environment"
+            }
+    } else {
+        echo "Using configured credentials for ${mode} mode"
+    }
+
+    echo "Environment: ${env.robotUser} & ${env.robotPwd}"
+    // Variables needed for reporting only within the jenkins files
+    def ciDisplayLink = ''
+    def passedTests = 0
+    def totalTests = 0
+    def failedTests = 0
+
+    try {
+        currentBuild.result = 'SUCCESS'
+        docker.withRegistry('http://docker-release-qtools-nce.nce.dockerhub.rnd.amadeus.net', 'IZ_USER') {
+            docker.image('docker-release-qtools-nce.nce.dockerhub.rnd.amadeus.net/a2ewhale_rfbrowser-init:latest')
+                .inside('-u root --entrypoint= ' +
+                        '-v /remote/tmp/weekly/a2ewhale_results:/remote/tmp/weekly/a2ewhale_results ' +
+                        '-v /remote/tmp/rnd-css/a2ewhale_results:/remote/tmp/rnd-css/a2ewhale_results ' +
+                        '-v /remote/projects:/remote/projects ' +
+                        '-v /remote/tmp:/remote/tmp') {
+                    stage('Pre-Requisites') {
+                    }
+                    stage('Set Up & Execute Tests') {
+                        println 'Values after resolving parameters:' + robotUser
+                        sh 'chmod 777 /remote/tmp/weekly/a2ewhale_results'
+                        sh 'a2ewhale -v dir pom.xml ' +
+                       '-r xunit:./reports/xunit.xml ' +
+                       '-r markdown:./reports/mrk.md ' +
+                       '-o ./reports ' +
+                       '-m ' +
+                       '-p maven_cmd:"antrun:run@rf_tests" ' +
+                       '--ci_display'
+                    }
+
+                    stage('Reporting Results') {
+                        def testResultSummary = junit([testResults: 'reports/xunit.xml', allowEmptyResults: true])
+                        passedTests = testResultSummary.passCount
+                        totalTests = testResultSummary.totalCount
+                        failedTests = testResultSummary.failCount
+
+                        def aqa_link = readFile('./reports/mrk.md').split('\\[').find { line ->
+                            line =~ 'Check Your Results new AQD.*'
+                        }
+
+                        if (aqa_link) {
+                            def m = aqa_link =~ 'Check Your Results new AQD]\\((?<link>.*)\\)$'
+                            if (m) {
+                                ciDisplayLink = m.group('link')
+                            }
+                        }
+
+                        archiveArtifacts 'reports/**'
+                        robot(outputPath: 'reports',
+                          outputFileName: "**/output.xml",
+                          logFileName: '**/log.html',
+                          reportFileName: '**/report.html',
+                          countSkippedTests: true,
+                          passThreshold: 100,
+                          unstableThreshold: 0.0)
+
+                        // def scheduler = amsTools.getScheduler(resolvedParams.cronTrigger)
+                        // properties([
+                        //     pipelineTriggers([cron(scheduler)]),
+                        //     sidebarLinks([[
+                        //         displayName: "AQA results ${currentBuild.displayName} " +
+                        //                     "OK/Total = ${passedTests}/${totalTests}",
+                        //         iconFileName: 'blue_anime.gif',
+                        //         urlName: "${ciDisplayLink}"
+                        //     ]])
+                        // ])
+                        currentBuild.description = "<a href=${ciDisplayLink}>AQA Results ${passedTests}/${totalTests}</a>"
+                    }
+                        }
+        }
+    } catch (Exception e) {
+        currentBuild.result = 'FAILURE'
+        println 'Inside the catch block'
+        println 'Exception: ' + e
+        throw e
+    } finally {
+        println 'Inside finally'
+        if (failedTests > 0 && emailRecipients) { // Changed isPullRequest to standard Jenkins PR detection
+            echo "${failedTests} failed tests. Sending notification e-mail."
+            emailext(
+                mimeType: 'text/html',
+                subject: "AMS Robot Regressions Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER} in ${environment} environment",
+                to: emailRecipients,
+                body: """<b>The Jenkins job ${env.JOB_NAME} has failed, with ${failedTests} out of ${totalTests} tests failing.</b><p>
+                        For more details, check out the build <a href="${env.BUILD_URL}">${env.BUILD_URL}</a> or review the attached report.</p>
+                        <p><a href="${ciDisplayLink}">View Report</a></p>""",
+                attachmentsPattern: '**/test_results/log.html'
+            )
+        }
+    }
+}

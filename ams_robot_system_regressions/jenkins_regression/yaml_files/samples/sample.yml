@@ -1,0 +1,4 @@
+params:
+  testfolder: './tests/templates/AMS-972_FALCON_ROBOT_FRAMEWORK_SCRIPTING/AMS-972_FALCON_ROBOT_FRAMEWORK_SCRIPTING.robot'
+  env: 'INT_XYZ'
+  cronTrigger: ["H 3-11/2 * * 1-5"]

@@ -1,0 +1,4 @@
+python-path = ["lib", "data", "resources", ".", "tests","../ams-lib-furkan"]
+output-dir = "reports"
+log-level = "TRACE"
+xunit = "xunit.xml"

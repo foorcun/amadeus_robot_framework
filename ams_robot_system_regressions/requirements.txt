@@ -1,0 +1,25 @@
+-i https://repository.rnd.amadeus.net/repository/api/pypi/pypi/simple
+--extra-index-url https://repository.rnd.amadeus.net/api/pypi/utopy-pypi-production-utopy/simple
+ams-lib
+jmespath_rf_lib
+protocols_lib>=2.0.1
+python-dateutil~=2.9.0.post0
+pylint
+beautifulsoup4~=4.12.3
+black
+pytest~=8.3.4
+jsonschema~=4.23.0
+python-dotenv
+jmespath~=1.0.1
+PyYAML~=6.0.2
+Jinja2~=3.1.4
+setuptools~=57.4.0
+loguru~=0.7.3
+coverage
+radon
+yapf
+ediPath~=2.0.51
+robotframework-tidy
+robotframework>=7.0
+robotframework-pabot
+websocket-client==0.46.0
