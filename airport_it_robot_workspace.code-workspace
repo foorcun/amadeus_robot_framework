@@ -1,0 +1,107 @@
+{
+    "folders": [
+        {
+            "path": "C:\\jdevcc\\workspace\\robot_workspace\\robot_workspace_airport_it"
+        },
+        {
+            "path": "../ams-lib-furkan"
+        },
+        {
+            "path": "../../24.12/ams_robot_training"
+        }
+    ],
+    "extensions": {
+        "recommendations": [
+            "ms-python.black-formatter",
+            "ms-python.pylint",
+            "analytic-signal.preview-html",
+            "tomsaunders-code.workspace-explorer",
+            "d-biehl.robotcode",
+            "ms-python.autopep8",
+            "yzhang.markdown-all-in-one",
+            "davidanson.vscode-markdownlint",
+            "42crunch.vscode-openapi",
+            "christian-kohler.path-intellisense",
+            "esbenp.prettier-vscode",
+            "ms-python.python",
+            "foxundermoon.shell-format",
+            "vscode-icons-team.vscode-icons",
+            "dotjoshjohnson.xml",
+            "redhat.vscode-yaml",
+            "samuelcolvin.jinjahtml",
+            "tamasfe.even-better-toml"
+        ]
+    },
+    "settings": {
+        "robotcode.robocop.enabled": true,
+        "robotcode.debug.attachPython": true,
+        "python.languageServer": "Pylance",
+        "pylint.lintOnChange": true,
+		"workspaceExplorer.workspaceStorageDirectory": "<Insert your workspace_folder>",
+        "[python]": {
+            "editor.defaultFormatter": "ms-python.black-formatter",
+            "editor.formatOnSave": true
+        },
+        "workbench.colorCustomizations": {
+            "activityBar.activeBackground": "#65c89b",
+            "activityBar.background": "#65c89b",
+            "activityBar.foreground": "#15202b",
+            "activityBar.inactiveForeground": "#15202b99",
+            "activityBarBadge.background": "#945bc4",
+            "activityBarBadge.foreground": "#e7e7e7",
+            "commandCenter.border": "#15202b99",
+            "sash.hoverBorder": "#65c89b",
+            "statusBar.background": "#42b883",
+            "statusBar.foreground": "#15202b",
+            "statusBarItem.hoverBackground": "#359268",
+            "statusBarItem.remoteBackground": "#42b883",
+            "statusBarItem.remoteForeground": "#15202b",
+            "titleBar.activeBackground": "#42b883",
+            "titleBar.activeForeground": "#15202b",
+            "titleBar.inactiveBackground": "#42b88399",
+            "titleBar.inactiveForeground": "#15202b99"
+        },
+        "peacock.color": "#42b883",
+        "python.autoComplete.extraPaths": [
+
+        ],
+        "hide-files.files": [],
+    },
+    "launch": {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": "RobotCode: Run Current",
+                "type": "robotcode",
+                "request": "launch",
+                "cwd": "${workspaceFolder}",
+                "target": "${file}"
+            },
+            {
+                "name": "RobotCode: Run All",
+                "type": "robotcode",
+                "request": "launch",
+                "cwd": "${workspaceFolder}",
+                "target": "."
+            },
+            {
+                "name": "RobotCode: Default",
+                "type": "robotcode",
+                "request": "launch",
+                "purpose": "default",
+                "presentation": {
+                    "hidden": true
+                },
+                "pythonConfiguration": "RobotCode: Python"
+            },
+            {
+                "name": "RobotCode: Python",
+                "type": "debugpy",
+                "request": "attach",
+                "presentation": {
+                    "hidden": true
+                }
+            }
+        ]
+    },
+}
